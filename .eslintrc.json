@@ -5,10 +5,14 @@
   "rules": {
     "prettier/prettier": [
       "error",
-      {
-        "semi": true,
-        "singleQuote": true
-      }
+        {
+          "printWidth": 80,
+          "tabWidth": 2,
+          "singleQuote": true,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "semi": true
+        }
     ]
   }
 }
