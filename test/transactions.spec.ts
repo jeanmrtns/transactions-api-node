@@ -77,4 +77,30 @@ describe('transactions routes', () => {
       }),
     );
   });
+
+  it('should be able to get the summary', async () => {
+    const createCreditTransactionResponse = await supertest(app.server)
+      .post('/transactions')
+      .send({
+        title: 'Credit transaction',
+        amount: 3000,
+        type: 'credit',
+      });
+    const cookies = createCreditTransactionResponse.get('Set-Cookie');
+    await supertest(app.server)
+      .post('/transactions')
+      .set('Cookie', cookies)
+      .send({
+        title: 'Credit transaction',
+        amount: 2000,
+        type: 'debit',
+      });
+
+    const getSummaryResponse = await supertest(app.server)
+      .get('/transactions/summary')
+      .set('Cookie', cookies);
+    expect(getSummaryResponse.body.summary).toEqual({
+      amount: 1000,
+    });
+  });
 });
