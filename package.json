@@ -11,7 +11,8 @@
     "dev": "tsx watch src/server.ts",
     "knex": "node --no-warnings --loader tsx ./node_modules/.bin/knex",
     "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix"
+    "lint:fix": "eslint src --ext .ts --fix",
+    "build": "tsup src --out-dir build"
   },
   "keywords": [],
   "author": "",
@@ -21,10 +22,11 @@
     "@types/node": "^20.4.5",
     "@types/supertest": "^2.0.12",
     "eslint": "^8.45.0",
+    "sqlite3": "^5.1.6",
     "supertest": "^6.3.3",
+    "tsup": "^7.1.0",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
-    "sqlite3": "^5.1.6",
     "vitest": "^0.33.0"
   },
   "dependencies": {
