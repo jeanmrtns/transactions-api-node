@@ -5,6 +5,9 @@ import { transactionsRoutes } from './routes/transactions';
 export const app = fastify();
 
 app.register(cookies);
+app.get('/', () => {
+  return 'Hello world!';
+});
 app.register(transactionsRoutes, {
   prefix: 'transactions',
 });
